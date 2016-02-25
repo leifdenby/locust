@@ -26,6 +26,10 @@ app = Flask(__name__)
 app.debug = True
 app.root_path = os.path.dirname(os.path.abspath(__file__))
 
+if hasattr(runners.locust_runner, 'ui_password') and not runners.locust_runner.ui_password is None:
+    app.config['BASIC_AUTH_FORCE'] = True
+    app.config['BASIC_AUTH_USERNAME'] = 'admin'
+    app.config['BASIC_AUTH_PASSWORD'] = locust_runner.ui_password
 
 @app.route('/')
 def index():

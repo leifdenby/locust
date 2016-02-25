@@ -228,6 +228,13 @@ def parse_options():
         help="show program's version number and exit"
     )
 
+    parser.add_option(
+        '--ui-password',
+        dest='ui_password',
+        default=None,
+        help="Password protect the UI"
+    )
+
     # Finalize
     # Return three-tuple of parser + the output from parse_args (opt obj, args)
     opts, args = parser.parse_args()
